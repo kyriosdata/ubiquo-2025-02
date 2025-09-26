@@ -10,6 +10,7 @@ System_Boundary(sis, "Serviço de Apoio") {
 
 }
 
+Person(operador, "Operador", "Responsável pela operação\ndo Hemogramas")
 System(hubsaude, "Hemogramas", "Sistema de Monitoramento\nde Hemogramas")
 System_Ext(fhir, "Servidor FHIR", "Oferece serviço de Subscription")
 System_Ext(device, "Dispositivo Móvel", "Recebe notificações (alertas)")
@@ -17,5 +18,7 @@ System_Ext(device, "Dispositivo Móvel", "Recebe notificações (alertas)")
 Rel(gerador, fhir, "Submete hemogramas", "/POST Observation")
 Rel(hubsaude, device, "Envia notificação", "Informação relevante (alerta)")
 Rel(fhir, hubsaude, "Notifica sobre novos hemogramas", "/hemogramas")
+Rel_Right(operador, fhir, "Configura assinatura", "POST /Subscription")
+Rel_Right(operador, gerador, "Dispara execução", "cli")
 
 @enduml
