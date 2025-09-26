@@ -5,6 +5,7 @@
 - Consulte o [plano](docs/plano.pdf).
 - Conceitos básicos de [hemograma](https://drive.google.com/file/d/11Mu27n1Av6A4__0fBmQ-vCtoo64JtKyJ/view?usp=sharing).
 - Um [hemograma](https://fhir.saude.go.gov.br/r4/exame/) pela SES-GO (FHIR 4.0.1).
+- Uso obrigatório do Github para registro de atividades, inclusive presenças. 
 
 ## Ementa
 
@@ -23,7 +24,7 @@ A avaliação da disciplina será baseada na metodologia de aula invertida, onde
 
 **1.1 Entrega dos Marcos Técnicos (40%)**
 - **Marco 1 - Recepção FHIR (10%)**: implementação funcional do receptor de mensagens FHIR via [subscription](https://www.hl7.org/fhir/R4/subscription.html), com parsing de instâncias de recursos Observation. Você deve usar este mecanismo para que cada novo hemograma recebido pelo servidor FHIR seja "sinalizado" para o receptor que terá que realizar o parsing do JSON recebido (hemograma). Se você usar um Servidor FHIR para testes como o HAPI FHIR, por exemplo, a consulta [https://hapi.fhir.org/baseR4/Subscription?status=active&_summary=count](https://hapi.fhir.org/baseR4/Subscription?status=active&_summary=count) mostrará quantas "assinaturas" estarão ativas. Um servidor para testes facilita o aprendizado, mas bem provavelmente irão disponibilizar localmente uma instância do [Servidor HAPI FHIR](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) ou outra.
-- **Marco 2 - Análise Individual (10%)**: componente de análise individual de hemogramas com detecção de desvios nos parâmetros hematológicos. Para garantir a padronização, todas as equipes deverão utilizar a seguinte tabela de referência simplificada para gerar os alertas:
+- **Marco 2 - Análise Individual (10%)**: componente de análise individual de hemogramas com detecção de desvios nos parâmetros hematológicos. Por exemplo, abaixo segue uma tabela de referência simplificada. Sua equipe é estimulada a buscar parâmetros do estado de Goiás e do Brasil, ou até mesmo mundiais:
 
 | Parâmetro | Unidade | Valor Mínimo | Valor Máximo |
 | :--- | :--- | :--- | :--- |

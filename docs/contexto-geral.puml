@@ -1,0 +1,21 @@
+@startuml contexto-geral
+
+!include C4_Context.puml
+
+SHOW_PERSON_OUTLINE()
+
+System_Boundary(sis, "Serviço de Apoio") {
+
+    System_Ext(gerador, "Gerador de hemogramas", "Simula produção de hemogramas para teste")
+
+}
+
+System(hubsaude, "Hemogramas", "Sistema de Monitoramento\nde Hemogramas")
+System_Ext(fhir, "Servidor FHIR", "Oferece serviço de Subscription")
+System_Ext(device, "Dispositivo Móvel", "Recebe notificações (alertas)")
+
+Rel(gerador, fhir, "Submete hemogramas", "/POST Observation")
+Rel(hubsaude, device, "Envia notificação", "Informação relevante (alerta)")
+Rel(fhir, hubsaude, "Notifica sobre novos hemogramas", "/hemogramas")
+
+@enduml
